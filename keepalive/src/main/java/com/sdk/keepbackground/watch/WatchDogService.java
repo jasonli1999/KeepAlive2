@@ -54,7 +54,7 @@ public class WatchDogService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Log.e("=============","======WatchDogService==onCreate=====");
         isCanStartWatchDog = WatchProcessPrefHelper.getIsStartDaemon(this);
         if (!isCanStartWatchDog){
             stopSelf();
@@ -77,8 +77,7 @@ public class WatchDogService extends Service {
         if (mPendingIntent == null ) {
             //定时检查 AbsWorkService 是否在运行，如果不在运行就把它拉起来   Android 5.0+ 使用 JobScheduler，效果比 AlarmManager 好
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                JobInfo.Builder builder = new JobInfo.Builder(HASH_CODE,
-                        new ComponentName(WatchDogService.this, JobSchedulerService.class));
+                JobInfo.Builder builder = new JobInfo.Builder(HASH_CODE, new ComponentName(WatchDogService.this, JobSchedulerService.class));
                 builder.setPeriodic(DaemonEnv.getWakeUpInterval(DaemonEnv.MINIMAL_WAKE_UP_INTERVAL));
                 //Android 7.0+ 增加了一项针对 JobScheduler 的新限制，最小间隔只能是下面设定的数字
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

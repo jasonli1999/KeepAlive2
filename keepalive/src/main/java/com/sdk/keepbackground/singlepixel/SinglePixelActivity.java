@@ -43,7 +43,7 @@ public class SinglePixelActivity extends Activity {
     @Override
     protected void onDestroy() {
 //        if (!SystemUtils.isAppAlive(this, Constant.PACKAGE_NAME)) {
-        Log.d("sj_keep", " 1 像素Activity --- onDestroy");
+        Log.e("sj_keep", " 1 像素Activity --- onDestroy");
             Intent intentAlive = new Intent(this, WatchDogService.class);
             startService(intentAlive);
 //        }

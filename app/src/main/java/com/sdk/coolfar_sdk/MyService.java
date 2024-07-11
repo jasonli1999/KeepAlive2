@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Messenger;
+import android.util.Log;
 
 import com.sdk.keepbackground.work.AbsWorkService;
 
@@ -13,6 +14,12 @@ public class MyService extends AbsWorkService {
     }
 
     private boolean mIsRunning;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.e("===================","======MyService==onCreate=====");
+    }
 
     @Override
     public Boolean needStartWorkService() {

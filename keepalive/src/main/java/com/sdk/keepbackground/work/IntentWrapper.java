@@ -414,10 +414,10 @@ public class IntentWrapper {
     /**
      * 防止华为机型未加入白名单时按返回键回到桌面再锁屏后几秒钟进程被杀
      */
-    public static void onBackPressed(Activity a) {
+    public static void onBackPressed(Activity activity) {
         Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
         launcherIntent.addCategory(Intent.CATEGORY_HOME);
-        a.startActivity(launcherIntent);
+        activity.startActivity(launcherIntent);
     }
 
     protected Intent intent;

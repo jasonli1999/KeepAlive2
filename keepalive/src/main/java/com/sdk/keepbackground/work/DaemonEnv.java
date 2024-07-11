@@ -1,5 +1,8 @@
 package com.sdk.keepbackground.work;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.sdk.keepbackground.work.IntentWrapper.getApplicationName;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,30 +13,24 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.sdk.keepbackground.utils.JumpWindowPemiManagement;
 import com.sdk.keepbackground.utils.NotificationSetUtil;
 import com.sdk.keepbackground.utils.SpManager;
 import com.sdk.keepbackground.watch.AbsServiceConnection;
 
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static com.sdk.keepbackground.work.IntentWrapper.getApplicationName;
-
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 
 /**
- *环境配置 每个进程独享一份 不同的进程，所有的静态和单例都会失效
- *
+ * 环境配置 每个进程独享一份 不同的进程，所有的静态和单例都会失效
+ * <p>
  * 这里将Daemon类 做成工具类
- *
+ * <p>
  * 每一个进程都会有一个Daemon类
- *
  */
 public final class DaemonEnv {
 
@@ -44,21 +41,23 @@ public final class DaemonEnv {
     public static final String ACTION_CANCEL_JOB_ALARM_SUB = "com.sdk.CANCEL_JOB_ALARM_SUB";
 
     public static final int DEFAULT_WAKE_UP_INTERVAL = 2 * 60 * 1000; // 默认JobScheduler 唤醒时间为 2 分钟
-    public static final int MINIMAL_WAKE_UP_INTERVAL = 60 * 1000; // 最小时间为 1 分钟
+    public static final int MINIMAL_WAKE_UP_INTERVAL = 10 * 1000; // 最小时间为 1 分钟
 
     public static Context app;
-    public static void init(Context context){
+
+    public static void init(Context context) {
         //开启保护
-        app=context.getApplicationContext();
+        app = context.getApplicationContext();
         DaemonEnv.sendStartWorkBroadcast(context);
     }
-    public static void startServiceMayBind( final Context context,
-                                     final Class<? extends Service> serviceClass,
-                                     AbsServiceConnection connection) {
+
+    public static void startServiceMayBind(final Context context,
+                                           final Class<? extends Service> serviceClass,
+                                           AbsServiceConnection connection) {
 
         // 判断当前绑定的状态
         if (!connection.mConnectedState) {
-            Log.d("sj_keep", "启动并绑定服务 ："+serviceClass.getSimpleName());
+            Log.d("sj_keep", "启动并绑定服务 ：" + serviceClass.getSimpleName());
             final Intent intent = new Intent(context, serviceClass);
             startServiceSafely(context, serviceClass);
             context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
@@ -66,13 +65,13 @@ public final class DaemonEnv {
     }
 
     public static void startServiceSafely(Context context, Class<? extends Service> i) {
-        Log.d("sj_keep", "安全启动服务。。: "+i.getSimpleName());
+        Log.d("sj_keep", "安全启动服务。。: " + i.getSimpleName());
         try {
-            if (Build.VERSION.SDK_INT >= 26){
+            if (Build.VERSION.SDK_INT >= 26) {
 //                context.startForegroundService(new Intent(context,i));
-                context.startService(new Intent(context,i));
-            }else {
-                context.startService(new Intent(context,i));
+                context.startService(new Intent(context, i));
+            } else {
+                context.startService(new Intent(context, i));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,13 +79,13 @@ public final class DaemonEnv {
     }
 
 
-    public static void startServiceSafelyWithData(Context context, Class<? extends Service> i){
+    public static void startServiceSafelyWithData(Context context, Class<? extends Service> i) {
         try {
-            if (Build.VERSION.SDK_INT >= 26){
-//                context.startForegroundService(new Intent(context,i));
-                context.startService(new Intent(context,i));
-            }else {
-                context.startService(new Intent(context,i));
+            if (Build.VERSION.SDK_INT >= 26) {
+                context.startForegroundService(new Intent(context,i));
+//                context.startService(new Intent(context, i));
+            } else {
+                context.startService(new Intent(context, i));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,19 +97,19 @@ public final class DaemonEnv {
     }
 
 
-    public static void safelyUnbindService(Service service, AbsServiceConnection mConnection){
-        try{
+    public static void safelyUnbindService(Service service, AbsServiceConnection mConnection) {
+        try {
             if (mConnection.mConnectedState) {
                 service.unbindService(mConnection);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
      * 当前哪个进程使用的时候 就用其上下文发送广播
-     *
+     * <p>
      * 如果是同一进程，可以自定义启动方式 不使用广播的模式
      */
     public static void sendStartWorkBroadcast(Context context) {
@@ -131,45 +130,49 @@ public final class DaemonEnv {
 
     /**
      * 后台允许白名单
+     *
      * @param a
      * @param reason
      */
-    public static void whiteListMatters(final Activity a, String reason){
-        try{
+    public static void whiteListMatters(final Activity a, String reason) {
+        try {
             if (ContextCompat.checkSelfPermission(a, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PERMISSION_GRANTED) {//判断是否已经赋予权限
                 ActivityCompat.requestPermissions(a,
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
             IntentWrapper.whiteListMatters(a, reason);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     /**
      * 后台允许白名单
+     *
      * @param a
      * @param reason
      * @param doAll  将所有影响保活开关都打开
      */
-    public static void whiteListMatters(final Activity a, String reason,boolean doAll){
-        try{
+    public static void whiteListMatters(final Activity a, String reason, boolean doAll) {
+        try {
             IntentWrapper.whiteListMatters(a, reason);
-            if(doAll){
-                openPushSwitch(a,reason);
-                checkWindowPerission(a,reason);
+            if (doAll) {
+                openPushSwitch(a, reason);
+                checkWindowPerission(a, reason);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
      * 打开通知权限
+     *
      * @param context
      * @param reason
      */
-    public static void openPushSwitch(final Context context, String reason){
+    public static void openPushSwitch(final Context context, String reason) {
         new AlertDialog.Builder(context)
                 .setCancelable(false)
                 .setTitle("需要开启 " + getApplicationName(context) + " 的通知开关")
@@ -189,7 +192,7 @@ public final class DaemonEnv {
      * 兼容6.0及以下
      */
     public static void checkWindowPerission(final Context context, String reason) {
-        if(!SpManager.getInstance().getBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW)){
+        if (!SpManager.getInstance().getBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW)) {
             new AlertDialog.Builder(context)
                     .setCancelable(false)
                     .setTitle("需要开启 " + getApplicationName(context) + " 的悬浮窗权限")
@@ -198,13 +201,13 @@ public final class DaemonEnv {
                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface d, int w) {
-                            SpManager.getInstance().putBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW,true);
+                            SpManager.getInstance().putBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW, true);
                             JumpWindowPemiManagement.goToWindow(context);
                         }
                     })
                     .show();
-        }else {
-            windowPermissionPassWithCheck(context,reason);
+        } else {
+            windowPermissionPassWithCheck(context, reason);
         }
     }
 
@@ -219,13 +222,13 @@ public final class DaemonEnv {
                         @RequiresApi(api = Build.VERSION_CODES.M)
                         @Override
                         public void onClick(DialogInterface d, int w) {
-                            SpManager.getInstance().putBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW,true);
+                            SpManager.getInstance().putBoolean(SpManager.Keys.IS_HINT_SYSTEM_WINDOW, true);
                             JumpWindowPemiManagement.goToWindow(context);
-                            Intent intent =new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()));
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()));
                             context.startActivity(intent);
                         }
                     })
                     .show();
-            }
+        }
     }
 }
