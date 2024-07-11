@@ -10,7 +10,7 @@ import android.util.Log;
  * 对广播进行监听，封装为一个ScreenReceiverUtil类，进行锁屏解锁的广播动态注册监听
  */
 public class ScreenReceiverUtil {
-    private Context mContext;
+    private final Context mContext;
     private SreenBroadcastReceiver mScreenReceiver;
     private ScreenManager mScreenManager;
 
@@ -42,16 +42,20 @@ public class ScreenReceiverUtil {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Intent.ACTION_SCREEN_ON.equals(action)) { // 开屏
+                if (mScreenManager != null) {
+                    mScreenManager.startActivity();
+                }
+                Log.e("sj_keep", "打开了1像素Activity");
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) { // 锁屏
                 if (mScreenManager != null) {
                     mScreenManager.startActivity();
                 }
-                Log.d("sj_keep", "打开了1像素Activity");
+                Log.e("sj_keep", "打开了1像素Activity");
             } else if (Intent.ACTION_USER_PRESENT.equals(action)) { // 解锁
                 if (mScreenManager != null) {
                     mScreenManager.finishActivity(); // 解锁
                 }
-                Log.d("sj_keep", "关闭了1像素Activity");
+                Log.e("sj_keep", "关闭了1像素Activity");
             }
         }
     }

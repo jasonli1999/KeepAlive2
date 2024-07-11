@@ -30,7 +30,6 @@ public class SinglePixelActivity extends Activity {
 
         Log.e("==============", "======SinglePixelActivity==onCreate=====");
 
-
         Window mWindow = getWindow();
         mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
         WindowManager.LayoutParams attrParams = mWindow.getAttributes();

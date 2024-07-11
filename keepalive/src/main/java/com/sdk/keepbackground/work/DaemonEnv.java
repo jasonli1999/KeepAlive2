@@ -51,10 +51,7 @@ public final class DaemonEnv {
         DaemonEnv.sendStartWorkBroadcast(context);
     }
 
-    public static void startServiceMayBind(final Context context,
-                                           final Class<? extends Service> serviceClass,
-                                           AbsServiceConnection connection) {
-
+    public static void startServiceMayBind(final Context context, final Class<? extends Service> serviceClass, AbsServiceConnection connection) {
         // 判断当前绑定的状态
         if (!connection.mConnectedState) {
             Log.d("sj_keep", "启动并绑定服务 ：" + serviceClass.getSimpleName());
@@ -82,8 +79,7 @@ public final class DaemonEnv {
     public static void startServiceSafelyWithData(Context context, Class<? extends Service> i) {
         try {
             if (Build.VERSION.SDK_INT >= 26) {
-//                context.startForegroundService(new Intent(context,i));
-                context.startService(new Intent(context, i));
+                context.startForegroundService(new Intent(context, i));
             } else {
                 context.startService(new Intent(context, i));
             }

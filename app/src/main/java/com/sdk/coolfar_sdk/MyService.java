@@ -1,6 +1,9 @@
 package com.sdk.coolfar_sdk;
 
-import android.app.Service;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
@@ -10,15 +13,24 @@ import android.util.Log;
 import com.sdk.keepbackground.work.AbsWorkService;
 
 public class MyService extends AbsWorkService {
-    public MyService() {
-    }
 
     private boolean mIsRunning;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("===================","======MyService==onCreate=====");
+        Log.e("===================", "======MyService==onCreate=====");
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            String CHANNEL_ID_STRING = "CHANNEL_ID_STRING";
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel channel = null;
+            channel = new NotificationChannel(CHANNEL_ID_STRING, getString(R.string.app_name), NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+            Notification notification = new Notification.Builder(getApplicationContext(), CHANNEL_ID_STRING).build();
+            startForeground(1, notification);
+        }
+
     }
 
     @Override
@@ -35,15 +47,16 @@ public class MyService extends AbsWorkService {
         doWork();
     }
 
-    private void doWork(){
+    private void doWork() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 // do something
-                mIsRunning=true;
+                mIsRunning = true;
             }
         }).start();
     }
+
     /**
      * 业务执行完成需要进行的操作
      * 手动停止服务sendStopWorkBroadcast时回调
@@ -55,6 +68,7 @@ public class MyService extends AbsWorkService {
 
     /**
      * 任务是否正在运行? 由实现者处理
+     *
      * @return 任务正在运行, true; 任务当前不在运行, false; 无法判断, 什么也不做, null.
      */
     @Override

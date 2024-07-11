@@ -7,18 +7,11 @@ import com.sdk.keepbackground.work.DaemonEnv;
 
 import java.util.Map;
 
-/**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : SP相关工具类
- * </pre>
- */
+
 public class SPUtils {
 
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
+    private final SharedPreferences sp;
+    private final SharedPreferences.Editor editor;
 
     /**
      * SPUtils构造函数

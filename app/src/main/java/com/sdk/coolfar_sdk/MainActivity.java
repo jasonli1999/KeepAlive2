@@ -20,9 +20,11 @@ public class MainActivity extends Activity {
     private void initLocaService() {
         //初始化
         DaemonEnv.init(this);
+
         //請求用戶忽略电池优化
         String reason="轨迹跟踪服务的持续运行";
         DaemonEnv.whiteListMatters(this, reason);
+
         //启动work服务
         DaemonEnv.startServiceSafelyWithData(MainActivity.this,MyService.class);
 
