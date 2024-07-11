@@ -17,6 +17,8 @@ import android.os.IBinder;
 import android.os.Messenger;
 import android.util.Log;
 
+import androidx.compose.ui.window.Notification;
+
 import com.sdk.keepbackground.work.DaemonEnv;
 import com.sdk.keepbackground.utils.ForegroundNotificationUtils;
 
@@ -52,6 +54,7 @@ public class WatchDogService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
         isCanStartWatchDog = WatchProcessPrefHelper.getIsStartDaemon(this);
         if (!isCanStartWatchDog){
             stopSelf();

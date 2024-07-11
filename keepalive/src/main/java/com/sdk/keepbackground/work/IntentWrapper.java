@@ -19,7 +19,6 @@ import com.sdk.keepbackground.utils.SpManager;
 
 import java.util.ArrayList;
 import java.util.List;
-;
 
 
 public class IntentWrapper {

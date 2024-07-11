@@ -60,6 +60,8 @@ public abstract class AbsWorkService extends Service {
             getPackageManager().setComponentEnabledSetting(new ComponentName(getPackageName(), WatchDogService.class.getName()),
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
         }
+
+
     }
 
     @Override

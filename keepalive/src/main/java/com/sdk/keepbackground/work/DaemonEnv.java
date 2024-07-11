@@ -69,7 +69,8 @@ public final class DaemonEnv {
         Log.d("sj_keep", "安全启动服务。。: "+i.getSimpleName());
         try {
             if (Build.VERSION.SDK_INT >= 26){
-                context.startForegroundService(new Intent(context,i));
+//                context.startForegroundService(new Intent(context,i));
+                context.startService(new Intent(context,i));
             }else {
                 context.startService(new Intent(context,i));
             }
@@ -82,7 +83,8 @@ public final class DaemonEnv {
     public static void startServiceSafelyWithData(Context context, Class<? extends Service> i){
         try {
             if (Build.VERSION.SDK_INT >= 26){
-                context.startForegroundService(new Intent(context,i));
+//                context.startForegroundService(new Intent(context,i));
+                context.startService(new Intent(context,i));
             }else {
                 context.startService(new Intent(context,i));
             }

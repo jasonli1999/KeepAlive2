@@ -38,6 +38,7 @@ public class ForegroundNotificationUtils {
                     .setLargeIcon(BitmapFactory.decodeResource(service.getResources(),R.drawable.icon1))
                     .build();
             service.startForeground(CHANNEL_POSITION,notification);//服务前台化只能使用startForeground()方法,不能使用 notificationManager.notify(1,notification); 这个只是启动通知使用的,使用这个方法你只需要等待几秒就会发现报错了
+
         }else {
             //利用漏洞在 API Level 18 及以上的 Android 系统中，启动前台服务而不显示通知
 //            service.startForeground(Foreground_ID, new Notification());
