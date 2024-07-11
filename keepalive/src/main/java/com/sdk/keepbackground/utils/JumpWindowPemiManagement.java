@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.support.v7.appcompat.BuildConfig;
 import android.util.Log;
 
 public class JumpWindowPemiManagement {
@@ -84,7 +83,7 @@ public class JumpWindowPemiManagement {
     public static void Huawei(Activity activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
         intent.setComponent(comp);
         activity.startActivity(intent);
@@ -93,7 +92,8 @@ public class JumpWindowPemiManagement {
     public static void Meizu(Activity activity) {
         Intent intent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+//        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         activity.startActivity(intent);
     }
 
@@ -102,7 +102,7 @@ public class JumpWindowPemiManagement {
             Intent intent = new Intent("miui.intent.action.APP_PERM_EDITOR");
             ComponentName componentName = new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
             intent.setComponent(componentName);
-            intent.putExtra("extra_pkgname", BuildConfig.APPLICATION_ID);
+            intent.putExtra("packageName", activity.getPackageName());
             activity.startActivity(intent);
         } catch (Exception e) {
             goToWindow(activity);
@@ -112,7 +112,7 @@ public class JumpWindowPemiManagement {
     public static void Sony(Activity activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.sonymobile.cta", "com.sonymobile.cta.SomcCTAMainActivity");
         intent.setComponent(comp);
         activity.startActivity(intent);
@@ -121,7 +121,7 @@ public class JumpWindowPemiManagement {
     public static void OPPO(Activity activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.color.safecenter", "com.color.safecenter.permission.PermissionManagerActivity");
         intent.setComponent(comp);
         activity.startActivity(intent);
@@ -130,7 +130,7 @@ public class JumpWindowPemiManagement {
     public static void LG(Activity activity) {
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.android.settings", "com.android.settings.Settings$AccessLockSummaryActivity");
         intent.setComponent(comp);
         activity.startActivity(intent);
@@ -139,7 +139,7 @@ public class JumpWindowPemiManagement {
     public static void Letv(Activity activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.letv.android.letvsafe", "com.letv.android.letvsafe.PermissionAndApps");
         intent.setComponent(comp);
         activity.startActivity(intent);
@@ -153,7 +153,7 @@ public class JumpWindowPemiManagement {
     public static void _360(Activity activity) {
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
+        intent.putExtra("packageName", activity.getPackageName());
         ComponentName comp = new ComponentName("com.qihoo360.mobilesafe", "com.qihoo360.mobilesafe.ui.index.AppEnterActivity");
         intent.setComponent(comp);
         activity.startActivity(intent);

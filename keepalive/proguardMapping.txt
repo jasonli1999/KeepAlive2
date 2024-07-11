@@ -1,0 +1,384 @@
+# compiler: R8
+# compiler_version: 8.5.10
+# common_typos_disable
+# {"id":"com.android.tools.r8.mapping","version":"2.2"}
+# pg_map_id: 5aca428
+# pg_map_hash: SHA-256 5aca428b0a59a6dc4256507548436ef9ff515c0661065d9c76bbdfbffe055f17
+com.sdk.keepbackground.KeepAliveApplication -> com.sdk.keepbackground.KeepAliveApplication:
+# {"id":"sourceFile","fileName":"KeepAliveApplication.java"}
+    com.sdk.keepbackground.KeepAliveApplication instance -> a
+    1:1:void <init>():17:17 -> <init>
+    1:12:java.lang.String getProcessName(android.content.Context):42:53 -> a
+    1:12:void onCreate():21:32 -> onCreate
+com.sdk.keepbackground.singlepixel.ScreenManager -> a.a:
+# {"id":"sourceFile","fileName":"ScreenManager.java"}
+    android.content.Context mContext -> a
+    java.lang.ref.WeakReference mActivity -> b
+    com.sdk.keepbackground.singlepixel.ScreenManager sInstance -> c
+      # {"id":"com.android.tools.r8.residualsignature","signature":"La/a;"}
+    1:1:void <clinit>():14:14 -> <clinit>
+    1:2:void <init>(android.content.Context):19:20 -> <init>
+    1:4:com.sdk.keepbackground.singlepixel.ScreenManager getInstance(android.content.Context):24:27 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;)La/a;"}
+    5:5:void setSingleActivity(android.app.Activity):34:34 -> a
+    6:9:void finishActivity():50:53 -> a
+    1:3:void startActivity():41:43 -> b
+com.sdk.keepbackground.singlepixel.ScreenReceiverUtil -> com.sdk.keepbackground.singlepixel.ScreenReceiverUtil:
+# {"id":"sourceFile","fileName":"ScreenReceiverUtil.java"}
+    android.content.Context mContext -> a
+    com.sdk.keepbackground.singlepixel.ScreenReceiverUtil$SreenBroadcastReceiver mScreenReceiver -> b
+    com.sdk.keepbackground.singlepixel.ScreenManager mScreenManager -> c
+      # {"id":"com.android.tools.r8.residualsignature","signature":"La/a;"}
+    1:2:void <init>(android.content.Context):17:18 -> <init>
+    1:1:com.sdk.keepbackground.singlepixel.ScreenManager access$000(com.sdk.keepbackground.singlepixel.ScreenReceiverUtil):12:12 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lcom/sdk/keepbackground/singlepixel/ScreenReceiverUtil;)La/a;"}
+    2:8:void startScreenReceiverListener():23:29 -> a
+    1:5:void stopScreenReceiverListener():33:37 -> b
+com.sdk.keepbackground.singlepixel.ScreenReceiverUtil$SreenBroadcastReceiver -> com.sdk.keepbackground.singlepixel.ScreenReceiverUtil$SreenBroadcastReceiver:
+# {"id":"sourceFile","fileName":"ScreenReceiverUtil.java"}
+    com.sdk.keepbackground.singlepixel.ScreenReceiverUtil this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.singlepixel.ScreenReceiverUtil):40:40 -> <init>
+    1:12:void onReceive(android.content.Context,android.content.Intent):43:54 -> onReceive
+com.sdk.keepbackground.singlepixel.SinglePixelActivity -> com.sdk.keepbackground.singlepixel.SinglePixelActivity:
+# {"id":"sourceFile","fileName":"SinglePixelActivity.java"}
+    1:1:void <init>():25:25 -> <init>
+    1:2:void finishSelf():74:75 -> a
+    1:5:boolean isScreenOn():81:85 -> b
+    1:2:boolean dispatchTouchEvent(android.view.MotionEvent):63:64 -> dispatchTouchEvent
+    1:10:void onCreate(android.os.Bundle):31:40 -> onCreate
+    1:5:void onDestroy():46:50 -> onDestroy
+    1:3:void onResume():55:57 -> onResume
+    1:2:boolean onTouchEvent(android.view.MotionEvent):69:70 -> onTouchEvent
+com.sdk.keepbackground.sync.Authenticator -> b.a:
+# {"id":"sourceFile","fileName":"Authenticator.java"}
+    android.content.Context context -> a
+    1:2:void <init>(android.content.Context):20:21 -> <init>
+    1:5:android.os.Bundle addAccount(android.accounts.AccountAuthenticatorResponse,java.lang.String,java.lang.String,java.lang.String[],android.os.Bundle):29:33 -> addAccount
+    1:1:android.os.Bundle confirmCredentials(android.accounts.AccountAuthenticatorResponse,android.accounts.Account,android.os.Bundle):40:40 -> confirmCredentials
+    1:1:android.os.Bundle editProperties(android.accounts.AccountAuthenticatorResponse,java.lang.String):46:46 -> editProperties
+    1:1:android.os.Bundle getAuthToken(android.accounts.AccountAuthenticatorResponse,android.accounts.Account,java.lang.String,android.os.Bundle):53:53 -> getAuthToken
+    1:1:java.lang.String getAuthTokenLabel(java.lang.String):58:58 -> getAuthTokenLabel
+    1:1:android.os.Bundle hasFeatures(android.accounts.AccountAuthenticatorResponse,android.accounts.Account,java.lang.String[]):65:65 -> hasFeatures
+    1:1:android.os.Bundle updateCredentials(android.accounts.AccountAuthenticatorResponse,android.accounts.Account,java.lang.String,android.os.Bundle):72:72 -> updateCredentials
+com.sdk.keepbackground.sync.AuthenticatorService -> com.sdk.keepbackground.sync.AuthenticatorService:
+# {"id":"sourceFile","fileName":"AuthenticatorService.java"}
+    com.sdk.keepbackground.sync.Authenticator mAuthenticator -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lb/a;"}
+    1:1:void <init>():14:14 -> <init>
+    1:1:android.os.IBinder onBind(android.content.Intent):25:25 -> onBind
+    1:2:void onCreate():19:20 -> onCreate
+com.sdk.keepbackground.sync.StubProvider -> com.sdk.keepbackground.sync.StubProvider:
+# {"id":"sourceFile","fileName":"StubProvider.java"}
+    1:1:void <init>():14:14 -> <init>
+com.sdk.keepbackground.sync.SyncAdapter -> b.b:
+# {"id":"sourceFile","fileName":"SyncAdapter.java"}
+    android.content.Context mContext -> a
+    1:2:void <init>(android.content.Context,boolean):23:24 -> <init>
+    1:1:void onPerformSync(android.accounts.Account,android.os.Bundle,java.lang.String,android.content.ContentProviderClient,android.content.SyncResult):29:29 -> onPerformSync
+com.sdk.keepbackground.sync.SyncService -> com.sdk.keepbackground.sync.SyncService:
+# {"id":"sourceFile","fileName":"SyncService.java"}
+    com.sdk.keepbackground.sync.SyncAdapter sSyncAdapter -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lb/b;"}
+    java.lang.Object sSyncAdapterLock -> b
+    1:1:void <clinit>():18:18 -> <clinit>
+    1:1:void <init>():20:20 -> <init>
+    1:1:android.os.IBinder onBind(android.content.Intent):33:33 -> onBind
+    1:4:void onCreate():25:28 -> onCreate
+    5:5:void onCreate():28:28 -> onCreate
+com.sdk.keepbackground.utils.FileUtils -> c.a:
+# {"id":"sourceFile","fileName":"FileUtils.java"}
+    1:1:java.io.File access$000(java.lang.String,java.lang.String):16:16 -> a
+    2:26:void writeTxtToFile(java.lang.String,java.lang.String,java.lang.String):55:79 -> a
+    27:32:void makeRootDirectory(java.lang.String):100:105 -> a
+    1:23:java.lang.String readTxtFile(java.lang.String):25:47 -> b
+    24:29:java.lang.String readTxtFile(java.lang.String):45:50 -> b
+    30:37:java.io.File makeFilePath(java.lang.String,java.lang.String):85:92 -> b
+com.sdk.keepbackground.utils.FileUtils$1 -> c.a$a:
+# {"id":"sourceFile","fileName":"FileUtils.java"}
+    java.lang.String val$path -> a
+    java.lang.String val$name -> b
+    java.lang.String val$strcontent -> c
+    1:1:void <init>(java.lang.String,java.lang.String,java.lang.String):55:55 -> <init>
+    1:19:void run():58:76 -> run
+com.sdk.keepbackground.utils.ForegroundNotificationUtils -> c.b:
+# {"id":"sourceFile","fileName":"ForegroundNotificationUtils.java"}
+    1:9:void deleteForegroundNotification(android.app.Service):56:64 -> a
+    1:32:void startForegroundNotification(android.app.Service):20:51 -> b
+com.sdk.keepbackground.utils.JumpWindowPemiManagement -> c.c:
+# {"id":"sourceFile","fileName":"JumpWindowPemiManagement.java"}
+    1:4:void goToAppSetting(android.content.Context):197:200 -> a
+    1:5:void goToWindow(android.content.Context):187:191 -> b
+    1:2:boolean hasWindowPei(android.content.Context):75:76 -> c
+com.sdk.keepbackground.utils.NotificationSetUtil -> c.d:
+# {"id":"sourceFile","fileName":"NotificationSetUtil.java"}
+    1:5:void OpenNotificationSetting(android.content.Context,com.sdk.keepbackground.utils.NotificationSetUtil$OnNextLitener):29:33 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Lc/d$a;)V"}
+    6:32:boolean isNotificationEnabled(android.content.Context):45:71 -> a
+com.sdk.keepbackground.utils.NotificationSetUtil$OnNextLitener -> c.d$a:
+# {"id":"sourceFile","fileName":"NotificationSetUtil.java"}
+    void onNext(java.lang.Boolean) -> a
+com.sdk.keepbackground.utils.SPUtils -> c.e:
+# {"id":"sourceFile","fileName":"SPUtils.java"}
+    android.content.SharedPreferences sp -> a
+    android.content.SharedPreferences$Editor editor -> b
+    1:4:void <init>(java.lang.String):30:33 -> <init>
+    1:1:java.lang.String getString(java.lang.String,java.lang.String):64:64 -> a
+    2:2:boolean getBoolean(java.lang.String):177:177 -> a
+    3:3:boolean getBoolean(java.lang.String,boolean):188:188 -> a
+    1:1:void putString(java.lang.String,java.lang.String):43:43 -> b
+    2:2:java.lang.String getString(java.lang.String):53:53 -> b
+    3:3:void putBoolean(java.lang.String,boolean):167:167 -> b
+com.sdk.keepbackground.utils.SpManager -> c.f:
+# {"id":"sourceFile","fileName":"SpManager.java"}
+    com.sdk.keepbackground.utils.SpManager instance -> c
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lc/f;"}
+    1:1:void <init>(java.lang.String):16:16 -> <init>
+    1:4:com.sdk.keepbackground.utils.SpManager getInstance():25:28 -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"()Lc/f;"}
+com.sdk.keepbackground.watch.AbsServiceConnection -> d.a:
+# {"id":"sourceFile","fileName":"AbsServiceConnection.java"}
+    1:4:void <init>():6:9 -> <init>
+    1:1:void onBindingDied(android.content.ComponentName):26:26 -> onBindingDied
+    void onDisconnected(android.content.ComponentName) -> onDisconnected
+    1:1:void onServiceConnected(android.content.ComponentName,android.os.IBinder):13:13 -> onServiceConnected
+    1:3:void onServiceDisconnected(android.content.ComponentName):18:20 -> onServiceDisconnected
+com.sdk.keepbackground.watch.JobSchedulerService -> com.sdk.keepbackground.watch.JobSchedulerService:
+# {"id":"sourceFile","fileName":"JobSchedulerService.java"}
+    1:1:void <init>():17:17 -> <init>
+    1:2:boolean onStartJob(android.app.job.JobParameters):21:22 -> onStartJob
+    1:1:boolean onStopJob(android.app.job.JobParameters):29:29 -> onStopJob
+com.sdk.keepbackground.watch.PlayMusicService -> com.sdk.keepbackground.watch.PlayMusicService:
+# {"id":"sourceFile","fileName":"PlayMusicService.java"}
+    boolean mNeedStop -> a
+    android.media.MediaPlayer mMediaPlayer -> b
+    com.sdk.keepbackground.watch.PlayMusicService$StopBroadcastReceiver stopBroadcastReceiver -> c
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lcom/sdk/keepbackground/watch/PlayMusicService$b;"}
+    1:2:void <init>():19:20 -> <init>
+    1:1:android.media.MediaPlayer access$000(com.sdk.keepbackground.watch.PlayMusicService):19:19 -> a
+    2:9:void startPlayMusic():45:52 -> a
+    1:1:void access$100(com.sdk.keepbackground.watch.PlayMusicService):19:19 -> b
+    2:6:void startRegisterReceiver():77:81 -> b
+    1:3:void startUnRegisterReceiver():86:88 -> c
+    1:3:void stopPlayMusic():57:59 -> d
+    1:4:void stopService():96:99 -> e
+    1:5:void onCreate():31:35 -> onCreate
+    1:8:void onDestroy():65:72 -> onDestroy
+    1:1:int onStartCommand(android.content.Intent,int,int):40:40 -> onStartCommand
+com.sdk.keepbackground.watch.PlayMusicService$1 -> com.sdk.keepbackground.watch.PlayMusicService$a:
+# {"id":"sourceFile","fileName":"PlayMusicService.java"}
+    com.sdk.keepbackground.watch.PlayMusicService this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.watch.PlayMusicService):46:46 -> <init>
+    1:2:void run():49:50 -> run
+com.sdk.keepbackground.watch.PlayMusicService$StopBroadcastReceiver -> com.sdk.keepbackground.watch.PlayMusicService$b:
+# {"id":"sourceFile","fileName":"PlayMusicService.java"}
+    com.sdk.keepbackground.watch.PlayMusicService this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.watch.PlayMusicService):102:102 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):106:106 -> onReceive
+com.sdk.keepbackground.watch.WakeUpReceiver -> com.sdk.keepbackground.watch.WakeUpReceiver:
+# {"id":"sourceFile","fileName":"WakeUpReceiver.java"}
+    1:1:void <init>():11:11 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):24:24 -> onReceive
+com.sdk.keepbackground.watch.WakeUpReceiver$StartWatchReceiver -> com.sdk.keepbackground.watch.WakeUpReceiver$StartWatchReceiver:
+# {"id":"sourceFile","fileName":"WakeUpReceiver.java"}
+    1:1:void <init>():36:36 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):41:41 -> onReceive
+com.sdk.keepbackground.watch.WakeUpReceiver$WakeUpAutoStartReceiver -> com.sdk.keepbackground.watch.WakeUpReceiver$WakeUpAutoStartReceiver:
+# {"id":"sourceFile","fileName":"WakeUpReceiver.java"}
+    1:1:void <init>():27:27 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):32:32 -> onReceive
+com.sdk.keepbackground.watch.WatchDogService -> com.sdk.keepbackground.watch.WatchDogService:
+# {"id":"sourceFile","fileName":"WatchDogService.java"}
+    com.sdk.keepbackground.watch.WatchDogService$StopBroadcastReceiver stopBroadcastReceiver -> a
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Lcom/sdk/keepbackground/watch/WatchDogService$c;"}
+    boolean isCanStartWatchDog -> b
+    com.sdk.keepbackground.watch.AbsServiceConnection mConnection -> c
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Ld/a;"}
+    android.app.PendingIntent mPendingIntent -> d
+    1:11:void <init>():26:36 -> <init>
+    1:1:void access$000(com.sdk.keepbackground.watch.WatchDogService):26:26 -> a
+    2:8:void cancelJobAlarmSub():199:205 -> a
+    1:1:void access$100(com.sdk.keepbackground.watch.WatchDogService):26:26 -> b
+    2:2:void exit():167:167 -> b
+    1:4:void onEnd():128:131 -> c
+    1:22:void onStart():74:95 -> d
+    23:45:void onStart():93:115 -> d
+    1:3:void startBindWorkServices():45:47 -> e
+    1:5:void startRegisterReceiver():177:181 -> f
+    1:3:void stopRegisterReceiver():186:188 -> g
+    1:7:void stopService():157:163 -> h
+    1:1:android.os.IBinder onBind(android.content.Intent):124:124 -> onBind
+    1:7:void onCreate():54:60 -> onCreate
+    1:2:void onDestroy():148:149 -> onDestroy
+    1:1:int onStartCommand(android.content.Intent,int,int):65:65 -> onStartCommand
+    1:1:void onTaskRemoved(android.content.Intent):140:140 -> onTaskRemoved
+com.sdk.keepbackground.watch.WatchDogService$1 -> com.sdk.keepbackground.watch.WatchDogService$a:
+# {"id":"sourceFile","fileName":"WatchDogService.java"}
+    com.sdk.keepbackground.watch.WatchDogService this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.watch.WatchDogService):36:36 -> <init>
+    1:1:void onDisconnected(android.content.ComponentName):40:40 -> onDisconnected
+com.sdk.keepbackground.watch.WatchDogService$2 -> com.sdk.keepbackground.watch.WatchDogService$b:
+# {"id":"sourceFile","fileName":"WatchDogService.java"}
+    com.sdk.keepbackground.watch.WatchDogService this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.watch.WatchDogService):167:167 -> <init>
+    1:1:void run():170:170 -> run
+com.sdk.keepbackground.watch.WatchDogService$StopBroadcastReceiver -> com.sdk.keepbackground.watch.WatchDogService$c:
+# {"id":"sourceFile","fileName":"WatchDogService.java"}
+    com.sdk.keepbackground.watch.WatchDogService this$0 -> a
+    1:1:void <init>(com.sdk.keepbackground.watch.WatchDogService):213:213 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):217:217 -> onReceive
+com.sdk.keepbackground.watch.WatchProcessPrefHelper -> d.b:
+# {"id":"sourceFile","fileName":"WatchProcessPrefHelper.java"}
+    java.lang.Class mWorkServiceClass -> a
+    1:18:java.lang.Class getWorkService():30:47 -> a
+    19:19:void setIsStartSDaemon(android.content.Context,boolean):51:51 -> a
+    20:20:boolean getIsStartDaemon(android.content.Context):55:55 -> a
+com.sdk.keepbackground.work.AbsWorkService -> com.sdk.keepbackground.work.AbsWorkService:
+# {"id":"sourceFile","fileName":"AbsWorkService.java"}
+    com.sdk.keepbackground.watch.AbsServiceConnection mConnection -> mConnection
+      # {"id":"com.android.tools.r8.residualsignature","signature":"Ld/a;"}
+    1:5:void <init>():30:34 -> <init>
+    1:1:com.sdk.keepbackground.watch.AbsServiceConnection access$000(com.sdk.keepbackground.work.AbsWorkService):30:30 -> access$000
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Lcom/sdk/keepbackground/work/AbsWorkService;)Ld/a;"}
+    1:1:void access$100(com.sdk.keepbackground.work.AbsWorkService):30:30 -> access$100
+    1:2:void createScreenListener():179:180 -> createScreenListener
+    1:1:android.os.IBinder onBind(android.content.Intent):96:96 -> onBind
+    1:14:void onCreate():47:60 -> onCreate
+    1:4:void onDestroy():112:115 -> onDestroy
+    1:4:void onEnd():119:122 -> onEnd
+    1:5:int onStart():83:87 -> onStart
+    1:1:int onStartCommand(android.content.Intent,int,int):67:67 -> onStartCommand
+    1:1:void onTaskRemoved(android.content.Intent):104:104 -> onTaskRemoved
+    1:5:void startRegisterReceiver():192:196 -> startRegisterReceiver
+    1:3:void stopRegisterReceiver():201:203 -> stopRegisterReceiver
+    1:3:void stopScreenListener():185:187 -> stopScreenListener
+    1:3:void stopService():169:171 -> stopService
+com.sdk.keepbackground.work.AbsWorkService$1 -> com.sdk.keepbackground.work.AbsWorkService$1:
+# {"id":"sourceFile","fileName":"AbsWorkService.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.AbsWorkService):34:34 -> <init>
+    1:2:void onDisconnected(android.content.ComponentName):38:39 -> onDisconnected
+com.sdk.keepbackground.work.AbsWorkService$StopBroadcastReceiver -> com.sdk.keepbackground.work.AbsWorkService$StopBroadcastReceiver:
+# {"id":"sourceFile","fileName":"AbsWorkService.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.AbsWorkService):207:207 -> <init>
+    1:1:void onReceive(android.content.Context,android.content.Intent):212:212 -> onReceive
+com.sdk.keepbackground.work.DaemonEnv -> com.sdk.keepbackground.work.DaemonEnv:
+# {"id":"sourceFile","fileName":"DaemonEnv.java"}
+    1:16:void checkWindowPerission(android.content.Context,java.lang.String):190:205 -> checkWindowPerission
+    1:1:int getWakeUpInterval(int):95:95 -> getWakeUpInterval
+    1:2:void init(android.content.Context):52:53 -> init
+    1:12:void openPushSwitch(android.content.Context,java.lang.String):171:182 -> openPushSwitch
+    1:5:void safelyUnbindService(android.app.Service,com.sdk.keepbackground.watch.AbsServiceConnection):101:105 -> safelyUnbindService
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/app/Service;Ld/a;)V"}
+    1:3:void sendStartWorkBroadcast(android.content.Context):115:117 -> sendStartWorkBroadcast
+    1:3:void sendStopWorkBroadcast(android.content.Context):125:127 -> sendStopWorkBroadcast
+    1:5:void startServiceMayBind(android.content.Context,java.lang.Class,com.sdk.keepbackground.watch.AbsServiceConnection):60:64 -> startServiceMayBind
+      # {"id":"com.android.tools.r8.residualsignature","signature":"(Landroid/content/Context;Ljava/lang/Class;Ld/a;)V"}
+    1:9:void startServiceSafely(android.content.Context,java.lang.Class):69:77 -> startServiceSafely
+    1:7:void startServiceSafelyWithData(android.content.Context,java.lang.Class):84:90 -> startServiceSafelyWithData
+    1:8:void whiteListMatters(android.app.Activity,java.lang.String):137:144 -> whiteListMatters
+    9:15:void whiteListMatters(android.app.Activity,java.lang.String,boolean):155:161 -> whiteListMatters
+    1:17:void windowPermissionPassWithCheck(android.content.Context,java.lang.String):210:226 -> windowPermissionPassWithCheck
+com.sdk.keepbackground.work.DaemonEnv$1 -> com.sdk.keepbackground.work.DaemonEnv$1:
+# {"id":"sourceFile","fileName":"DaemonEnv.java"}
+    1:1:void <init>(android.content.Context):176:176 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):179:179 -> onClick
+com.sdk.keepbackground.work.DaemonEnv$2 -> com.sdk.keepbackground.work.DaemonEnv$2:
+# {"id":"sourceFile","fileName":"DaemonEnv.java"}
+    1:1:void <init>(android.content.Context):196:196 -> <init>
+    1:2:void onClick(android.content.DialogInterface,int):199:200 -> onClick
+com.sdk.keepbackground.work.DaemonEnv$3 -> com.sdk.keepbackground.work.DaemonEnv$3:
+# {"id":"sourceFile","fileName":"DaemonEnv.java"}
+    1:1:void <init>(android.content.Context):216:216 -> <init>
+    1:4:void onClick(android.content.DialogInterface,int):220:223 -> onClick
+com.sdk.keepbackground.work.IntentWrapper -> com.sdk.keepbackground.work.IntentWrapper:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:3:void <init>(android.content.Intent,int):427:429 -> <init>
+    1:3:boolean doesActivityExists(android.content.Context):436:438 -> doesActivityExists
+    1:6:java.lang.String getApplicationName(android.content.Context):194:199 -> getApplicationName
+    1:111:java.util.List getIntentWrapperList(android.content.Context):73:183 -> getIntentWrapperList
+    1:3:void onBackPressed(android.app.Activity):419:421 -> onBackPressed
+    1:1:void startActivitySafely(android.app.Activity):445:445 -> startActivitySafely
+    1:194:java.util.List whiteListMatters(android.app.Activity,java.lang.String):210:403 -> whiteListMatters
+    195:201:java.util.List whiteListMatters(android.app.Activity,java.lang.String):402:408 -> whiteListMatters
+    202:206:java.util.List whiteListMatters(android.app.Activity,java.lang.String):387:391 -> whiteListMatters
+    207:213:java.util.List whiteListMatters(android.app.Activity,java.lang.String):390:396 -> whiteListMatters
+    214:218:java.util.List whiteListMatters(android.app.Activity,java.lang.String):339:343 -> whiteListMatters
+    219:256:java.util.List whiteListMatters(android.app.Activity,java.lang.String):342:379 -> whiteListMatters
+    257:263:java.util.List whiteListMatters(android.app.Activity,java.lang.String):378:384 -> whiteListMatters
+    264:268:java.util.List whiteListMatters(android.app.Activity,java.lang.String):363:367 -> whiteListMatters
+    269:275:java.util.List whiteListMatters(android.app.Activity,java.lang.String):366:372 -> whiteListMatters
+    276:280:java.util.List whiteListMatters(android.app.Activity,java.lang.String):351:355 -> whiteListMatters
+    281:287:java.util.List whiteListMatters(android.app.Activity,java.lang.String):354:360 -> whiteListMatters
+    288:292:java.util.List whiteListMatters(android.app.Activity,java.lang.String):287:291 -> whiteListMatters
+    293:318:java.util.List whiteListMatters(android.app.Activity,java.lang.String):290:315 -> whiteListMatters
+    319:325:java.util.List whiteListMatters(android.app.Activity,java.lang.String):314:320 -> whiteListMatters
+    326:335:java.util.List whiteListMatters(android.app.Activity,java.lang.String):299:308 -> whiteListMatters
+    336:340:java.util.List whiteListMatters(android.app.Activity,java.lang.String):275:279 -> whiteListMatters
+    341:347:java.util.List whiteListMatters(android.app.Activity,java.lang.String):278:284 -> whiteListMatters
+    348:352:java.util.List whiteListMatters(android.app.Activity,java.lang.String):263:267 -> whiteListMatters
+    353:418:java.util.List whiteListMatters(android.app.Activity,java.lang.String):266:331 -> whiteListMatters
+    419:425:java.util.List whiteListMatters(android.app.Activity,java.lang.String):330:336 -> whiteListMatters
+    426:430:java.util.List whiteListMatters(android.app.Activity,java.lang.String):251:255 -> whiteListMatters
+    431:437:java.util.List whiteListMatters(android.app.Activity,java.lang.String):254:260 -> whiteListMatters
+    438:442:java.util.List whiteListMatters(android.app.Activity,java.lang.String):238:242 -> whiteListMatters
+    443:449:java.util.List whiteListMatters(android.app.Activity,java.lang.String):241:247 -> whiteListMatters
+    450:462:java.util.List whiteListMatters(android.app.Activity,java.lang.String):222:234 -> whiteListMatters
+com.sdk.keepbackground.work.IntentWrapper$1 -> com.sdk.keepbackground.work.IntentWrapper$1:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):230:230 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):231:231 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$10 -> com.sdk.keepbackground.work.IntentWrapper$10:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):344:344 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):345:345 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$11 -> com.sdk.keepbackground.work.IntentWrapper$11:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):356:356 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):357:357 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$12 -> com.sdk.keepbackground.work.IntentWrapper$12:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):368:368 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):369:369 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$13 -> com.sdk.keepbackground.work.IntentWrapper$13:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):380:380 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):381:381 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$14 -> com.sdk.keepbackground.work.IntentWrapper$14:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):392:392 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):393:393 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$15 -> com.sdk.keepbackground.work.IntentWrapper$15:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):404:404 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):405:405 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$2 -> com.sdk.keepbackground.work.IntentWrapper$2:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):243:243 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):244:244 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$3 -> com.sdk.keepbackground.work.IntentWrapper$3:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):256:256 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):257:257 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$4 -> com.sdk.keepbackground.work.IntentWrapper$4:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):268:268 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):269:269 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$5 -> com.sdk.keepbackground.work.IntentWrapper$5:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):280:280 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):281:281 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$6 -> com.sdk.keepbackground.work.IntentWrapper$6:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):292:292 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):293:293 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$7 -> com.sdk.keepbackground.work.IntentWrapper$7:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):304:304 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):305:305 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$8 -> com.sdk.keepbackground.work.IntentWrapper$8:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):316:316 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):317:317 -> onClick
+com.sdk.keepbackground.work.IntentWrapper$9 -> com.sdk.keepbackground.work.IntentWrapper$9:
+# {"id":"sourceFile","fileName":"IntentWrapper.java"}
+    1:1:void <init>(com.sdk.keepbackground.work.IntentWrapper,android.app.Activity):332:332 -> <init>
+    1:1:void onClick(android.content.DialogInterface,int):333:333 -> onClick

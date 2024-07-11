@@ -31,8 +31,8 @@
 # 保护代码中的Annotation不被混淆
 -keepattributes *Annotation*
 
-# 忽略警告
--ignorewarning
+## 忽略警告
+#-ignorewarning
 
 # 保护泛型不被混淆
 -keepattributes Signature
@@ -177,4 +177,6 @@
     -keep class com.autonavi.**{*;}
 
 -keep class com.sdk.keepbackground.work.** { *; }
+
+
 
