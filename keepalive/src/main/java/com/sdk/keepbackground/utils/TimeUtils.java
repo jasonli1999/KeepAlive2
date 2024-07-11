@@ -15,11 +15,11 @@ public class TimeUtils {
     /**
      * 秒与毫秒的倍数
      */
-    private static final int SEC  = 1000;
+    private static final int SEC = 1000;
     /**
      * 分与毫秒的倍数
      */
-     public static final int MIN  = 60000;
+    public static final int MIN = 60000;
     /**
      * 时与毫秒的倍数
      */
@@ -27,7 +27,7 @@ public class TimeUtils {
     /**
      * 天与毫秒的倍数
      */
-    public static final int DAY  = 86400000;
+    public static final int DAY = 86400000;
 
     private TimeUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -70,7 +70,7 @@ public class TimeUtils {
      * @param format       时间格式
      * @return 时间字符串
      */
-    public  synchronized static String milliseconds2String(long milliseconds, SimpleDateFormat format) {
+    public synchronized static String milliseconds2String(long milliseconds, SimpleDateFormat format) {
         return format.format(new Date(milliseconds));
     }
 
@@ -569,6 +569,7 @@ public class TimeUtils {
         }
         return (float) (now.getTime() - begin.getTime()) / (float) (end.getTime() - begin.getTime());
     }
+
     public enum TimeUnit {
         MSEC,
         SEC,

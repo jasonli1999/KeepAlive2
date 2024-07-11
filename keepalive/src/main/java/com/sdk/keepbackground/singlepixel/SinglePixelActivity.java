@@ -12,9 +12,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
-
 import com.sdk.keepbackground.watch.WatchDogService;
-
 
 
 /**
@@ -27,8 +25,12 @@ public class SinglePixelActivity extends Activity {
     private static final String TAG = SinglePixelActivity.class.getSimpleName();
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Log.e("==============", "======SinglePixelActivity==onCreate=====");
+
+
         Window mWindow = getWindow();
         mWindow.setGravity(Gravity.LEFT | Gravity.TOP);
         WindowManager.LayoutParams attrParams = mWindow.getAttributes();
@@ -40,15 +42,6 @@ public class SinglePixelActivity extends Activity {
         ScreenManager.getInstance(this).setSingleActivity(this);
     }
 
-    @Override
-    protected void onDestroy() {
-//        if (!SystemUtils.isAppAlive(this, Constant.PACKAGE_NAME)) {
-        Log.e("sj_keep", " 1 像素Activity --- onDestroy");
-            Intent intentAlive = new Intent(this, WatchDogService.class);
-            startService(intentAlive);
-//        }
-        super.onDestroy();
-    }
 
     @Override
     protected void onResume() {
@@ -57,6 +50,17 @@ public class SinglePixelActivity extends Activity {
             finishSelf();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+//        if (!SystemUtils.isAppAlive(this, Constant.PACKAGE_NAME)) {
+        Log.e("sj_keep", " 1 像素Activity --- onDestroy");
+        Intent intentAlive = new Intent(this, WatchDogService.class);
+        startService(intentAlive);
+//        }
+        super.onDestroy();
+    }
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent motionEvent) {

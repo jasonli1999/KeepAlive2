@@ -27,7 +27,9 @@ public class ScreenManager {
         return sInstance;
     }
 
-    /** 获得SinglePixelActivity的引用
+    /**
+     * 获得SinglePixelActivity的引用
+     *
      * @param activity
      */
     public void setSingleActivity(Activity activity) {

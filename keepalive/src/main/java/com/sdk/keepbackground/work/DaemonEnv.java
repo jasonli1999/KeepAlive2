@@ -41,7 +41,7 @@ public final class DaemonEnv {
     public static final String ACTION_CANCEL_JOB_ALARM_SUB = "com.sdk.CANCEL_JOB_ALARM_SUB";
 
     public static final int DEFAULT_WAKE_UP_INTERVAL = 2 * 60 * 1000; // 默认JobScheduler 唤醒时间为 2 分钟
-    public static final int MINIMAL_WAKE_UP_INTERVAL = 10 * 1000; // 最小时间为 1 分钟
+    public static final int MINIMAL_WAKE_UP_INTERVAL = 60 * 1000; // 最小时间为 1 分钟
 
     public static Context app;
 
@@ -82,8 +82,8 @@ public final class DaemonEnv {
     public static void startServiceSafelyWithData(Context context, Class<? extends Service> i) {
         try {
             if (Build.VERSION.SDK_INT >= 26) {
-                context.startForegroundService(new Intent(context,i));
-//                context.startService(new Intent(context, i));
+//                context.startForegroundService(new Intent(context,i));
+                context.startService(new Intent(context, i));
             } else {
                 context.startService(new Intent(context, i));
             }

@@ -7,7 +7,6 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.SystemClock;
 
-
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -47,8 +46,8 @@ public class AndroidUtil {
                 }
                 return res1.toString();
             }
-        } catch (Exception ex) {
-
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
         return "02:00:00:00:00:00";
     }
@@ -60,7 +59,7 @@ public class AndroidUtil {
     public static String getMacAddress(Context context) {
 
         try {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 return getMacAddr();
             }
             //wifi mac地址
@@ -73,7 +72,7 @@ public class AndroidUtil {
         }
     }
 
-    public static String getSerialNumber(){
+    public static String getSerialNumber() {
 
         String serial = null;
 
@@ -81,9 +80,9 @@ public class AndroidUtil {
 
             Class<?> c = Class.forName("android.os.SystemProperties");
 
-            Method get =c.getMethod("get", String.class);
+            Method get = c.getMethod("get", String.class);
 
-            serial = (String)get.invoke(c, "ro.serialno");
+            serial = (String) get.invoke(c, "ro.serialno");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,11 +176,12 @@ public class AndroidUtil {
 
     /**
      * 判断gps是否开启
+     *
      * @param context
      * @return
      */
     public static final boolean gpsOpened(final Context context) {
-        LocationManager locationManager  = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 }
